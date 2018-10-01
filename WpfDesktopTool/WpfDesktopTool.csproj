@@ -127,5 +127,8 @@
   <ItemGroup>
     <Resource Include="neteasymusic.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DumpFiles\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -242,7 +242,10 @@ namespace NcmDecrypt
             //    } while (File.Exists(_filePath));
             //    Console.WriteLine($"if Exist {_filePath} ");
             //}
-
+            if (!Directory.Exists(_defaultDumpDir))//bugfix 防止临时文件夹不存在
+            {
+                Directory.CreateDirectory(_defaultDumpDir);
+            }
             _filePath = Path.Combine(_defaultDumpDir, string.Format("{0}.{1}", _fileOriginName, Format));
             using (FileStream stream = new FileStream(_filePath, FileMode.OpenOrCreate, FileAccess.Write))
             {
