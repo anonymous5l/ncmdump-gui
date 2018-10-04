@@ -152,7 +152,7 @@ namespace DesktopTool
                                 }
                                 catch (Exception ex)
                                 {
-                                    MessageBox.Show(string.Format("Error: {0}", ex.Message));
+                                    MessageBox.Show(string.Format("Error while processing file:\n\t{0}\n\t{1}", _processing.FullName, ex.Message));
                                 }
                             }));
                         }

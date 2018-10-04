@@ -298,7 +298,7 @@ namespace DesktopTool
             tag.Title = Name;
             tag.Performers = Artist;
             tag.Album = _cdata.Album;
-            tag.Comment = "Create by netease copyright protected dump tool gui. author 5L";
+            tag.Comment = "Created by netease copyright media dump tool(ncmdump-gui). author 5L";
 
             f.Save();
         }
