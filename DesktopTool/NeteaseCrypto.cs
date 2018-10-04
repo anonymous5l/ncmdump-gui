@@ -214,7 +214,7 @@ namespace DesktopTool
             }
         }
 
-        public void Dump()
+        public void Dump(string toFolder="./Converted")
         {
             int n = 0x8000;
             double totalLen = _file.Length - _file.Position;
@@ -228,7 +228,10 @@ namespace DesktopTool
                 convertName = convertName.Replace(i.ToString(), "");
             }
 
-            string filePath = string.Format("{0}.{1}", convertName, Format);
+            if (!Directory.Exists(toFolder))
+                Directory.CreateDirectory(toFolder);
+
+            string filePath = toFolder + "/" + string.Format("{0}.{1}", convertName, Format);
 
             using (FileStream stream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write))
             {
