@@ -9,12 +9,31 @@
     <DockPanel AllowDrop="True" Drop="DockPanel_Drop">
         <DockPanel DockPanel.Dock="Top" Margin="3">
             <DockPanel>
-                <CheckBox Margin="5" DockPanel.Dock="Bottom" x:Name="cbx_isAutoDelete" IsChecked="{Binding IsAutoDelete}" Content="是否删除ncm源文件" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                <DockPanel DockPanel.Dock="Bottom">
+                    <Grid Margin="5 0">
+                        <TextBlock VerticalAlignment="Center" DockPanel.Dock="Left" Text="转换文件后你选择："></TextBlock>
+                    </Grid>
+                    <UniformGrid  Margin="5"  Rows="1">
+                        <RadioButton x:Name="rb_isDefault" IsChecked="{Binding IsDefault}" Content="什么都不做" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                        <RadioButton x:Name="cbx_isAutoDelete" IsChecked="{Binding IsAutoDelete}" Content="删除ncm源文件" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                        <RadioButton x:Name="rb_isMove" IsChecked="{Binding IsMove}" Content="移走ncm源文件" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                    </UniformGrid>
+                    
+                </DockPanel>
                 <DockPanel >
                     <TextBlock Margin="1" VerticalAlignment="Center" Height="25" DockPanel.Dock="Top" Text="点击左边的按钮，选择你保存Music的文件夹吧! 当然，你也可以把想转换的文件拖拽进来~"/>
-                    <Button x:Name="btn_selectDir" Margin="2" Height="30"  DockPanel.Dock="Left" Content="SelectDir"
-                            Click="btn_selectDir_Click"/>
-                    <Label BorderThickness="2" BorderBrush="LightGray" Background="White" Margin="2" VerticalContentAlignment="Center" Content="{Binding DirPath}"/>
+                    <DockPanel DockPanel.Dock="Bottom">
+                        <Grid  DockPanel.Dock="Left" Height="30" Margin="5 0">
+                            <TextBlock Text="Ncm移动目标文件夹: " VerticalAlignment="Center"/>
+                        </Grid>
+                        <Label IsEnabled="{Binding IsChecked,ElementName=rb_isMove}" BorderThickness="2" BorderBrush="LightGray" Background="White" Margin="2" VerticalContentAlignment="Center" Content="{Binding MovePath}"/>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Bottom">
+                        <Button x:Name="btn_selectDir" Margin="2" Height="30"  DockPanel.Dock="Left" Content="查找Ncm源文件"
+                                Click="btn_selectDir_Click"/>
+                        <Label BorderThickness="2" BorderBrush="LightGray" Background="White" Margin="2" VerticalContentAlignment="Center" Content="{Binding DirPath}"/>
+                    </DockPanel>
+                    <Grid></Grid>
                 </DockPanel>
             </DockPanel>
         </DockPanel>

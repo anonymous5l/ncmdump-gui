@@ -32,7 +32,10 @@ namespace WpfDesktopTool.Views
 
         private BindingList<NcmFileInfo> _files = new BindingList<NcmFileInfo>();
         private bool _isAutoDelete;
-        string _dirPath ;
+        private bool _isMove;
+        private bool _isDefault;
+        private string _dirPath ;
+        private string _movePath;
         public BindingList<NcmFileInfo> Files
         {
             get { return _files; }
@@ -49,6 +52,24 @@ namespace WpfDesktopTool.Views
         {
             get { return _dirPath; }
             set { _dirPath = value; OnPropertyChanged(); }
+        }
+
+        public bool IsMove
+        {
+            get { return _isMove; }
+            set { _isMove = value; OnPropertyChanged(); }
+        }
+
+        public bool IsDefault
+        {
+            get { return _isDefault; }
+            set { _isDefault = value; OnPropertyChanged(); }
+        }
+
+        public string MovePath
+        {
+            get { return _movePath; }
+            set { _movePath = value;OnPropertyChanged(); }
         }
 
         public DragFileView()
@@ -74,27 +95,43 @@ namespace WpfDesktopTool.Views
                 return;
             }
             btn_Convert.IsEnabled = false;
+            if (IsMove)
+            {
+                MovePath = Path.GetFullPath(@".\MovedPath\");
+                ShowSelectFolderBroserDialog((selectedPath) =>
+                {
+                    MovePath = selectedPath;
+                }, "请选择移动Ncm源文件的目标文件夹");
+            }
             await Task.Run(() => { DumpFile(); });
             btn_Convert.IsEnabled = true;
         }
 
         private async void btn_selectDir_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
-            dialog.Description = "请选择保存Music所在文件夹";
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            ShowSelectFolderBroserDialog( async (selectedPath) =>
             {
-                if (string.IsNullOrWhiteSpace(dialog.SelectedPath))
-                {
-                    return;
-                }
-                DirPath = dialog.SelectedPath;
+                DirPath = selectedPath;
                 List<string> fileList = new List<string>();
                 await Task.Run(() =>
                 {
                     GetFile(DirPath, fileList);
                 });
                 AddFileList(fileList.ToArray());
+            }, "请选择保存Music所在文件夹");
+        }
+
+        public static void ShowSelectFolderBroserDialog(Action<string> callback,string description=null)
+        {
+            System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
+            dialog.Description = description;
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (string.IsNullOrWhiteSpace(dialog.SelectedPath))
+                {
+                    return;
+                }
+                callback?.Invoke(dialog.SelectedPath);
             }
         }
 
@@ -126,6 +163,13 @@ namespace WpfDesktopTool.Views
                     {
                         fileInfo.Message += s;
                         fileInfo.Message += "\n";
+                        if (s == "转换完成")
+                        {
+                            if (IsMove)
+                            {
+                                File.Move(fileInfo.FilePath, Path.Combine(MovePath, Path.GetFileName(fileInfo.FilePath)));
+                            }
+                        }
                     });
                 });
                 tlist.Add(t);

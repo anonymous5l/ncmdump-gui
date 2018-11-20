@@ -348,7 +348,7 @@ namespace NcmDecrypt
                         File.Delete(dstPath);
                     }
                     File.Move(ncm._filePath, dstPath);
-                    callback?.Invoke("正输出到源文件夹");
+                    callback?.Invoke("正输出到目标文件夹");
                 }
                 catch (Exception e)
                 {

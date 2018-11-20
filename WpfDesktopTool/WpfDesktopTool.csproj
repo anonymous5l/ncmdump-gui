@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D0D13B8D-B67F-4309-8DCB-96FEE9F87526}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>WpfDesktopTool</RootNamespace>
     <AssemblyName>WpfDesktopTool</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
