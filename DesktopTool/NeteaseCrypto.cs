@@ -217,7 +217,7 @@ namespace DesktopTool
             }
         }
 
-        public void Dump()
+        public void Dump(string toFolder="./Converted")
         {
             int n = 0x8000;
             double totalLen = _file.Length - _file.Position;
@@ -231,7 +231,10 @@ namespace DesktopTool
                 convertName = convertName.Replace(i.ToString(), "");
             }
 
-            string filePath = string.Format("{0}.{1}", convertName, Format);
+            if (!Directory.Exists(toFolder))
+                Directory.CreateDirectory(toFolder);
+
+            string filePath = toFolder + "/" + string.Format("{0}.{1}", convertName, Format);
 
             using (FileStream stream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write))
             {
@@ -298,7 +301,7 @@ namespace DesktopTool
             tag.Title = Name;
             tag.Performers = Artist;
             tag.Album = _cdata.Album;
-            tag.Comment = "Create by netease copyright protected dump tool gui. author 5L";
+            tag.Comment = "Created by netease copyright media dump tool(ncmdump-gui). author 5L";
 
             f.Save();
         }
