@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopTool", "DesktopTool\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectUI", "DirectUI\DirectUI.csproj", "{A21C975B-00E0-448A-8F44-8904FD8A2E0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfDesktopTool", "WpfDesktopTool\WpfDesktopTool.csproj", "{D0D13B8D-B67F-4309-8DCB-96FEE9F87526}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NcmDecrypt", "NcmDecrypt\NcmDecrypt.csproj", "{D598AACA-C99C-4D29-B4FB-A8DF177C278F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{A21C975B-00E0-448A-8F44-8904FD8A2E0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A21C975B-00E0-448A-8F44-8904FD8A2E0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A21C975B-00E0-448A-8F44-8904FD8A2E0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0D13B8D-B67F-4309-8DCB-96FEE9F87526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0D13B8D-B67F-4309-8DCB-96FEE9F87526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0D13B8D-B67F-4309-8DCB-96FEE9F87526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0D13B8D-B67F-4309-8DCB-96FEE9F87526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D598AACA-C99C-4D29-B4FB-A8DF177C278F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D598AACA-C99C-4D29-B4FB-A8DF177C278F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D598AACA-C99C-4D29-B4FB-A8DF177C278F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D598AACA-C99C-4D29-B4FB-A8DF177C278F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
