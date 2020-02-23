@@ -302,8 +302,6 @@ namespace DesktopTool
                         _cdata.Format = "flac";
                     }
 
-                    string FilePathWithoutExtension = FileName.Remove(FileName.LastIndexOf("."));
-
                     filePath = string.Format("{0}.{1}", FileName, Format);
 
                     stream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
