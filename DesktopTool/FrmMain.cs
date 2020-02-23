@@ -166,7 +166,7 @@ namespace DesktopTool
                                 {
                                     var fs = _processing.Open(FileMode.Open, FileAccess.Read, FileShare.Read);
                                     NeteaseCrypto neteaseFile = new NeteaseCrypto(fs);
-                                    neteaseFile.FileName = Path.GetFileNameWithoutExtension(file);
+                                    neteaseFile.FileName = Path.GetFullPath(file);
                                     _files.Add(neteaseFile);
                                 }
                                 catch (Exception ex)
